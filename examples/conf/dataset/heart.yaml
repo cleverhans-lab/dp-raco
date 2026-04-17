@@ -1,0 +1,11 @@
+name: "heart"
+data_path: "../../data/heart"
+num_classes: 2
+num_fairness_classes: None # check
+sensitive_feature: "Sex"
+num_samples: 253680
+num_features: 21
+rng: 0
+mitigation_class: 1
+num_train_samples: None
+

@@ -1,0 +1,10 @@
+name: "adult"
+data_path: "../../data/adult"
+num_classes: 2
+num_fairness_classes: 2
+num_samples: 50000
+num_features: 102
+rng: 0
+mitigation_class: 1
+num_train_samples: None
+

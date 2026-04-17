@@ -1,0 +1,27 @@
+name: "folktables"
+data_path: "../../data/folktables"
+num_classes: None
+num_fairness_classes: None
+num_samples: None
+num_features: None
+rng: 0
+mitigation_class: None
+num_train_samples: None
+
+survey_year: 2018
+horizon: '5-Year'
+survey: 'person'
+states: ['AL']
+
+sensitive_attribute_names:  [
+        'White',
+        'Black/African American',
+        'American Indian',
+        'Alaskan Native',
+        'American Indian & Alaska Native/not specificed',
+        'Asian',
+        'Hawaiian',
+        'Othe Race',
+        'Two or more races',
+    ]
+label_names: ["Unemployed", "Employed"]

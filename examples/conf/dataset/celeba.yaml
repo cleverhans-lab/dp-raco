@@ -1,0 +1,16 @@
+name: 'celeba'
+image_size: 128
+img_width: 128
+img_height: 128
+img_channels: 3
+data_path: '../../data/celeba_3splits'
+num_classes: 2
+num_fairness_classes: 2
+num_train_samples: 162770
+num_features: None
+label_attr: "Male"
+sensitive_attr: "Smiling"
+
+max_train_samples: 1000000
+max_val_samples: 2048
+max_test_samples: 2048

@@ -1,0 +1,89 @@
+[build-system]
+requires = ["hatchling>=1.24.2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dpraco"
+version = "0.1.0"   # Remove if you want git-based versioning
+description = "Add a short description here!"
+readme = "README.rst"
+license = { file = "LICENSE.txt" }
+authors = [
+  { name = "Tudor Cebere", email = "tudorcebere@gmail.com" }
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+]
+requires-python = ">=3.9"
+
+dependencies = [
+  "importlib-metadata; python_version<'3.8'",
+  "jax[cuda12]",
+  "jaxlib",
+  "numpy",
+  "scipy",
+  "dp-accounting",
+  "hydra-core",
+  "hydra-optuna-sweeper",
+  "hydra-joblib-launcher",
+  "flax",
+  "optax",
+  "pandas",
+  "datasets",
+  "scikit-learn>=1.3.2",
+  "torch>=2.7.1",
+  "torchvision>=0.22.1",
+  "folktables>=0.0.12",
+  "tensorflow-datasets>=4.9.0",
+  "dm-pix>=0.4.4",
+  "matplotlib>=3.7.5",
+  "transformers>=4.46.3",
+  "wilds>=2.0.0",
+  "pip>=25.1.1"
+]
+
+[project.optional-dependencies]
+testing = [
+  "pytest",
+  "pytest-cov",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/pyscaffold/pyscaffold/"
+Documentation = "https://pyscaffold.org/"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dpraco"]
+
+[tool.pytest.ini_options]
+addopts = "--cov dpraco --cov-report term-missing --verbose"
+norecursedirs = ["dist", "build", ".tox"]
+testpaths = ["tests"]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [".tox", "build", "dist", ".eggs", "docs/conf.py"]
+
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu" },
+]
+torchvision = [
+    { index = "pytorch-cpu" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "filprofiler>=2023.3.1",
+    "jupyter>=1.1.1",
+    "memory-profiler>=0.61.0",
+]

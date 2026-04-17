@@ -1,0 +1,32 @@
+hydra:
+  run:
+    dir: ./outputs/${algorithm.name}/${dataset.name}/${algorithm.constraint_type}/epsilon=${training_params.target_epsilon}-gamma=${algorithm.gamma}-${eval.name}-${algorithm.lambda_update_type}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+training_params:
+  lr: 0.051
+  optim_seeds: [24, 42]
+  seed: 2189
+  momentum: 0
+  batch_size: 4096
+  target_epsilon: 9
+  lr_lambda: 0.1501
+  MAX_STEPS: 5000
+  poisson: True
+  weight_decay: 0
+  number_of_steps: None
+  eval_batch_size: 20000
+  num_aug: 1
+  softmax_temperature: 2
+  num_folds: 8
+  pad_poisson: True
+
+
+eval:
+  eval_every_k: 25
+  name: "dpraco"
+
+defaults:
+  - _self_
+  - dataset: folkstables
+  - algorithm: dpraco_demographic_parity
+  - model: logistic_regression

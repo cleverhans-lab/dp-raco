@@ -1,0 +1,26 @@
+name: "dpraco"
+laplace_parameter_b: 0.5
+sigma: 4
+C: 3
+delta: 1e-4
+
+
+hist_estimation_frequency: 1
+
+# options: ["EqualizedOdds", "DemographicParity"]
+constraint_type: "DemographicParity"
+
+# options: ["independent", "post-processing", "public"]
+denominator_type: "independent"
+
+use_non_private_histogram: False
+gamma: 0.3
+lambda_update_type: "soft"
+
+# options: ["gradient_ascent_with_momentum", "exponentiated_gradient_ascent"]
+dual_update_type: "gradient_ascent_with_momentum"
+
+# exponentiated_gradient_ascent specific options
+normalize_dual_update: True
+dual_init_strategy: "ones"
+dual_radius: 1

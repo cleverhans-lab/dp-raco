@@ -1,0 +1,10 @@
+name: "parkinsons"
+data_path: "../../data/parkinsons"
+num_classes: 2
+num_fairness_classes: 2
+num_samples: 50000 #fix
+num_features: 19
+rng: 0 #double check
+mitigation_class: 1
+num_train_samples: None
+

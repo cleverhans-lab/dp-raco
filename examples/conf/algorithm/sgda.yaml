@@ -1,0 +1,29 @@
+name: "dpraco"
+laplace_parameter_b: 1000000
+sigma: 0
+C: 100000
+delta: 1e-4
+
+
+hist_estimation_frequency: 1
+hist_estimation_batch_size: 512
+
+# options: ["EqualizedOdds", "DemographicParity"]
+# histogram_type: "DemographicParity"
+
+# options: ["EqualizedOdds", "DemographicParity", "FalseNegativeRate", "FalseDiscoveryRate"] (Note only used for evalution)
+constraint_type: "BalancedAccuracy"
+
+use_non_private_histogram: True
+
+# options: ["independent", "post-processing", "public"]
+denominator_type: "independent"
+lambda_update_type: "soft"
+
+dual_update_type: "gradient_ascent_with_momentum"
+normalize_dual_update: True
+dual_init_strategy: "ones" # options: "ones", "uniform"
+dual_radius: 1 # options: float > 1
+
+
+gamma: 0.01

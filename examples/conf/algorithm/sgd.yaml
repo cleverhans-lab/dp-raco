@@ -1,0 +1,10 @@
+name: "sgd"
+sigma: 0
+C: inf
+delta: inf
+
+# options: ["EqualizedOdds", "DemographicParity", "FalseNegativeRate"] (Note only used for evalution)
+constraint_type: "DemographicParity"
+laplace_parameter_b: 1000
+gamma: 1
+lambda_update_type: None

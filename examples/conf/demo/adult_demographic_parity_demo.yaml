@@ -1,0 +1,8 @@
+# Overrides for examples/dpraco_adult_demographic_parity_demo.ipynb
+training_params:
+  target_epsilon: 1.0
+  seed: 2189
+  number_of_steps: 1000
+
+algorithm:
+  gamma: 0.15

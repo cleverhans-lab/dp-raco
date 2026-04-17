@@ -1,0 +1,9 @@
+name: "credit-card"
+data_path: "../../data/credit-card"
+num_classes: 2
+num_fairness_classes: 2
+num_features: 85
+rng: 0
+mitigation_class: 1
+num_train_samples: None
+
