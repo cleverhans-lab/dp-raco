@@ -1,0 +1,206 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  --k-mb: #1e46a0;
+  --k-gt: #48c7ba;
+  --k-ab: #4285f4;
+  --k-np: #ea5469;
+  --k-pp: #9561e2;
+  --k-ag: #647896;
+  --k-or: #d97706;
+  --k-gr: #16a34a;
+  --k-bl: #2563eb;
+  --k-pu: #7c3aed;
+  --k-rd: #c0392b;
+  --k-bg: #f8f7f4;
+  --k-pa: #ffffff;
+  --k-bd: #e2e0da;
+  --k-ink: #1a1916;
+  --k-mu: #6b6860;
+  --k-hi: #fffbea;
+  --k-err-bg: #fef2f2;
+  --k-err-bd: #fca5a5;
+  --k-succ-bg: #f0fdf4;
+  --k-fb-txt: #ffffff;
+
+  --fs-tiny: 11px;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 16px;
+  --fs-xl: 18px;
+  --fs-2xl: 20px;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+    --fs-tiny: 11px;
+    --fs-xs: 12px;
+    --fs-sm: 13px;
+    --fs-md: 14px;
+    --fs-lg: 15px;
+    --fs-xl: 16px;
+    --fs-2xl: 30px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+    --k-mb: #3b82f6;
+    --k-gt: #2dd4bf;
+    --k-ab: #60a5fa;
+    --k-np: #f43f5e;
+    --k-pp: #a78bfa;
+    --k-ag: #6b7280;
+    --k-or: #f59e0b;
+    --k-gr: #22c55e;
+    --k-bl: #60a5fa;
+    --k-pu: #a855f7;
+    --k-rd: #ef4444;
+    --k-bg: #16171d;
+    --k-pa: #1f2028;
+    --k-bd: #2e303a;
+    --k-ink: #f3f4f6;
+    --k-mu: #9ca3af;
+    --k-hi: rgba(255, 251, 234, 0.05);
+    --k-err-bg: rgba(239, 68, 68, 0.1);
+    --k-err-bd: rgba(239, 68, 68, 0.4);
+    --k-succ-bg: rgba(34, 197, 94, 0.1);
+    --k-fb-txt: #08060d;
+  }
+
+  /* Invert lightness but preserve color hues for SVG diagrams in dark mode */
+  img[src$=".svg"] {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+img {
+  transition: filter 0.2s ease-in-out;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: inherit;
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 48px 0 16px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0 0 20px;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+/* Markdown Blog Content */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Wrap images or components that have "right" in their alt text/class */
+.blog-content img[alt*="right"],
+.blog-content .wrap-right {
+  float: right;
+  width: 48%;
+  margin: 12px 0 24px 40px;
+}
+
+@media (max-width: 768px) {
+  .blog-content img[alt*="right"],
+  .blog-content .wrap-right {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 32px 0 24px 0;
+  }
+}
+
+/* Ensure floated images don't bleed into the next section */
+.blog-content h1,
+.blog-content h2,
+.blog-content h3 {
+  clear: both;
+}
