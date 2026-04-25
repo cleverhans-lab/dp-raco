@@ -31,7 +31,7 @@ Concretely, if one naively adds a regularizer to enforce a rate constraint and a
 
 The central observation is that rate constraints are not arbitrary dataset-level functions. They always take a particular form: **prediction rates aggregated over subgroups**, where those subgroups arise from a natural partition of the data.
 
-![Histogram right](/histogram.svg)
+![Histogram right](histogram.svg)
 Consider demographic parity across three racial groups. Rather than a single constraint over the full dataset, one can decompose it into three subgroup-level constraints:
 
 - **Asian vs. Non-Asian**
