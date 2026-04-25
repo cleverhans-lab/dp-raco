@@ -327,7 +327,7 @@ export default function App() {
             Private Rate-Constrained Optimization
           </div>
           <div style={{ fontSize: FZ.md, color: K.mu, marginTop: 4 }}>
-            Yaghini · Cebere · Menart · Bellet · Papernot &nbsp;·&nbsp; ICLR 2026
+            Yaghini* · Cebere* · Menart · Bellet · Papernot &nbsp;·&nbsp; ICLR 2026
           </div>
 
           {/* Tabs */}
