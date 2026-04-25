@@ -41,7 +41,7 @@ const SF = "Helvetica, sans-serif";
 /* ═══════════════════════════════════════════════════════════════════════════ */
 function DpSgdDiag() {
   return (
-    <img src="/dp_sgd.svg" alt="Standard DP-SGD" style={{ display: "block", margin: "0 auto", width: "80%", height: "auto" }} />
+    <img src={`${import.meta.env.BASE_URL}dp_sgd.svg`} alt="Standard DP-SGD" style={{ display: "block", margin: "0 auto", width: "80%", height: "auto" }} />
   );
 }
 
@@ -51,7 +51,7 @@ function DpSgdDiag() {
 /* ═══════════════════════════════════════════════════════════════════════════ */
 function NaiveDiag() {
   return (
-    <img src="/naive.svg" alt="Naive Algorithm" style={{ display: "block", margin: "0 auto", width: "80%", height: "auto" }} />
+    <img src={`${import.meta.env.BASE_URL}naive.svg`} alt="Naive Algorithm" style={{ display: "block", margin: "0 auto", width: "80%", height: "auto" }} />
   );
 }
 
@@ -63,7 +63,7 @@ function NaiveDiag() {
 /* ═══════════════════════════════════════════════════════════════════════════ */
 function RacoDpDiag() {
   return (
-    <img src="/raco_dp.svg" alt="RaCO-DP Algorithm" style={{ display: "block", margin: "0 auto", width: "100%", height: "auto" }} />
+    <img src={`${import.meta.env.BASE_URL}raco_dp.svg`} alt="RaCO-DP Algorithm" style={{ display: "block", margin: "0 auto", width: "100%", height: "auto" }} />
   );
 }
 
@@ -301,7 +301,7 @@ export default function App() {
 
   useEffect(() => {
     if (tab === "blog" && !blogContent) {
-      fetch("/blog.md")
+      fetch(`${import.meta.env.BASE_URL}blog.md`)
         .then((res) => res.text())
         .then((text) => setBlogContent(text))
         .catch(() => setBlogContent("Failed to load blog post."));
