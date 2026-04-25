@@ -294,6 +294,43 @@ const Lbl = ({ children, color = K.mu }) => (
   </span>
 );
 
+function CitationBlock() {
+  const [copied, setCopied] = useState(false);
+  const bibtex = `@inproceedings{
+  yaghini2026private,
+  title={Private Rate-Constrained Optimization with Applications to Fair Learning},
+  author={Mohammad Yaghini and Tudor Cebere and Michael Menart and Aur{\\'e}lien Bellet and Nicolas Papernot},
+  booktitle={The Fourteenth International Conference on Learning Representations},
+  year={2026},
+  url={https://openreview.net/forum?id=mex3rvs2KX}
+}`;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(bibtex);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div style={{ marginTop: 64, borderTop: `1px solid ${K.bd}`, paddingTop: 40 }}>
+      <Lbl>Cite us</Lbl>
+      <div style={{ position: "relative", marginTop: 16 }}>
+        <pre style={{ margin: 0, padding: 20, background: K.pa, borderRadius: 6, border: `1px solid ${K.bd}`, overflowX: "auto", fontSize: FZ.sm, lineHeight: 1.5, color: K.ink }}>
+          <code>{bibtex}</code>
+        </pre>
+        <button onClick={handleCopy} style={{
+          position: "absolute", top: 12, right: 12, padding: "6px 12px",
+          background: K.bg, border: `1px solid ${K.bd}`, borderRadius: 4,
+          cursor: "pointer", fontSize: FZ.xs, fontWeight: 500,
+          color: copied ? K.gr : K.mu, transition: "all 0.2s ease"
+        }}>
+          {copied ? "Copied!" : "Copy"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [tab, setTab] = useState("walkthrough");
   const [activeStep, setActiveStep] = useState(0);
@@ -528,6 +565,8 @@ while reliably satisfying fairness constraints
               </div>
             ))}
           </div> */}
+
+          <CitationBlock />
         </div>
       </div>
 
