@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+import katex from "katex";
 import { ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, ErrorBar, ScatterChart, Scatter, ReferenceLine } from "recharts";
 
 /* ─── Palette & Typography ───────────────────────────────────────────────── */
@@ -179,8 +180,9 @@ const barChartData = [
 function ResultsChart() {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: 32, marginTop: 32, marginBottom: 24 }}>
-      <div style={{ height: 400, width: "100%" }}>
-        <ResponsiveContainer>
+      <figure style={{ margin: 0, width: "100%" }}>
+        <div style={{ height: 400, width: "100%" }}>
+          <ResponsiveContainer>
           <ComposedChart data={chartData} margin={{ top: 20, right: 20, bottom: 30, left: 20 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--k-bd)" vertical={false} />
             <XAxis 
@@ -217,8 +219,13 @@ function ResultsChart() {
             <Area type="monotone" dataKey="raco_area" fill={K.pp} stroke="none" fillOpacity={0.3} connectNulls tooltipType="none" legendType="none" />
             <Line type="monotone" dataKey="raco" name="RaCO-DP" stroke={K.pp} strokeWidth={2} dot={{ r: 4, fill: K.pp }} activeDot={{ r: 6 }} connectNulls />
           </ComposedChart>
-        </ResponsiveContainer>
-      </div>
+          </ResponsiveContainer>
+        </div>
+        <figcaption style={{ textAlign: "center", color: K.mu, fontSize: FZ.sm, marginTop: 12 }}>
+          Parkinsons dataset.
+          Logistic Regressions models trained with <TeX>{"\\varepsilon=1"}</TeX>
+        </figcaption>
+      </figure>
 
       <div style={{ height: 400, width: "100%" }}>
         <ResponsiveContainer>
@@ -269,7 +276,7 @@ const steps = [
   {
     id: "naive",
     title: "Naïve rate constraint",
-    desc: "Adding a regularizer R(θ, D) to enforce a rate constraint looks natural — but the regularizer depends on the entire dataset D. This breaks per-sample decomposability: each sample can contribute up to |D| + 1 terms, making sensitivity O(|D|) and requiring far too much noise.",
+    desc: <>Adding a regularizer <TeX>{"R(\\theta, D)"}</TeX> to enforce a rate constraint looks natural — but the regularizer depends on the entire dataset <TeX>D</TeX>. This breaks per-sample decomposability: each sample can contribute up to <TeX>{"|D| + 1"}</TeX> terms, making sensitivity <TeX>{"\\mathcal{O}(|D|)"}</TeX> and requiring far too much noise.</>,
     diag: <NaiveDiag />,
     prevLabel: "← Back to Standard DP-SGD",
     nextLabel: "Remove the direct dependency on the dataset →",
@@ -293,6 +300,14 @@ const Lbl = ({ children, color = K.mu }) => (
     {children}
   </span>
 );
+
+function TeX({ children, block = false }) {
+  const html = katex.renderToString(String(children), {
+    throwOnError: false,
+    displayMode: block,
+  });
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+}
 
 function CitationBlock() {
   const [copied, setCopied] = useState(false);
@@ -378,7 +393,7 @@ export default function App() {
             }}>
               Walkthrough
             </button>
-            {/* <button onClick={() => setTab("blog")} style={{
+            <button onClick={() => setTab("blog")} style={{
               background: "none", border: "none", padding: 0,
               fontSize: FZ.md, fontWeight: tab === "blog" ? 600 : 400,
               color: tab === "blog" ? K.bl : K.mu,
@@ -386,7 +401,7 @@ export default function App() {
               textUnderlineOffset: 4
             }}>
               Blog
-            </button> */}
+            </button>
           </div>
         </div>
         <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
@@ -472,12 +487,12 @@ export default function App() {
                           background: "var(--k-err-bg)", border: `1px solid var(--k-err-bd)`, borderRadius: 6,
                         }}>
                           <div style={{ fontWeight: 600, color: K.rd, fontSize: FZ.sm, marginBottom: 4 }}>
-                            Problem: R(θ; D) depends on the whole dataset
+                            Problem: <TeX>{"R(\\theta; D)"}</TeX> depends on the whole dataset
                           </div>
                           <div style={{ fontSize: FZ.xs, color: K.ink, lineHeight: 1.65 }}>
                             The per-sample gradient of sample <em>i</em> receives contributions from every other
                             sample <em>j</em> through the shared constraint. Each sample contributes up to{" "}
-                            <strong>|D| + 1 terms</strong> — requiring noise proportional to dataset size and
+                            <strong><TeX>{"|D| + 1"}</TeX> terms</strong> — requiring noise proportional to dataset size and
                             destroying utility.
                           </div>
                         </div>
@@ -538,7 +553,7 @@ export default function App() {
             <p style={{ fontSize: FZ.lg, lineHeight: 1.8, color: K.ink, margin: "0 0 48px" }}>
             On tabular data, RaCO-DP Pareto dominates prior SOTA and
             nearly closes the optimality gap with non-private models.
-            On deep models, our method maintains high utility even at small ε
+            On deep models, our method maintains high utility even at small <TeX>{"\\varepsilon"}</TeX>
 while reliably satisfying fairness constraints
             </p>
           <ResultsChart />

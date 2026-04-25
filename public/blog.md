@@ -7,6 +7,7 @@
 
 Training a machine learning model is, at its core, an optimization problem. In practice, however, minimizing a loss function is rarely sufficient. Models deployed in high-stakes settings must also satisfy behavioral requirements.
 
+![Header right](header.svg)
 Consider a hiring algorithm that must treat applicants equitably regardless of gender. A criminal risk assessment tool that should be equally calibrated across racial groups. A medical diagnostic system that cannot exhibit differential miss rates across demographic populations. These are not edge cases; they represent core requirements in precisely the settings where machine learning is most consequential.
 
 What unites all of these is that they can be expressed as **rate constraints**: conditions on a model's prediction rates across subpopulations. These settings share a further commonality: they involve sensitive personal data, making privacy a central concern as well.
@@ -38,7 +39,7 @@ Consider demographic parity across three racial groups. Rather than a single con
 - **Black vs. Non-Black**
 - **White vs. Non-White**
 
-For a Black individual in the dataset, it is possible to determine, prior to any gradient computation, that this person will contribute exactly **3 + 1 terms** to the regularizer: one per constraint plus one for the standard loss. This is a fixed, bounded quantity that does not depend on |D|.
+For any individual in the dataset, it is possible to determine, prior to any gradient computation, that this person will contribute exactly **3 + 1 terms** to the regularizer: one per constraint plus one for the standard loss. This is a fixed, bounded quantity that does not depend on $|D|$.
 
 This structural property is the foundation of our approach. We formalize it through the notion of **generalized rate constraints** and show that all standard group fairness criteria, including demographic parity, equalized odds, and false negative rate bounds, can be expressed in this form.
 
@@ -64,7 +65,7 @@ The overall procedure is a differentially private variant of **Stochastic Gradie
 
 We evaluated RaCO-DP across multiple datasets, fairness constraint types, and model architectures.
 
-**On tabular data** (Adult, Credit-Card, Parkinsons), RaCO-DP under ε = 1 differential privacy effectively closed the gap to non-private models in the accuracy-fairness Pareto frontier. Prior methods such as DP-FERMI left a substantial deficit; RaCO-DP largely eliminates it.
+**On tabular data** (Adult, Credit-Card, Parkinsons), RaCO-DP under ε = 1 differential privacy effectively closed the gap to non-private models in the accuracy-fairness Pareto frontier. 
 
 **At scale**, with 18 simultaneous demographic parity constraints on the ACSEmployment dataset, the method continues to perform well, confirming that it does not degrade under a large constraint set.
 
@@ -85,11 +86,3 @@ We evaluated RaCO-DP across multiple datasets, fairness constraint types, and mo
 A prevailing assumption in the field has been that differential privacy and fairness constraints are in fundamental tension, and that enforcing one necessarily compromises the other. Our results indicate that this tension is considerably weaker than previously believed, and appears to be largely an artifact of suboptimal algorithm design.
 
 With the right algorithmic framework, it is possible to obtain strong differential privacy guarantees, directly enforced fairness constraints, and high model utility simultaneously.
-
-
-
-## Code
-
-The implementation is available at [github.com/cleverhans-lab/dp-raco](https://github.com/cleverhans-lab/dp-raco).
-
-*Paper: "Private Rate-Constrained Optimization with Applications to Fair Learning", ICLR 2026.*
