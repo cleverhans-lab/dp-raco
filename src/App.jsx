@@ -227,8 +227,9 @@ function ResultsChart() {
         </figcaption>
       </figure>
 
-      <div style={{ height: 400, width: "100%" }}>
-        <ResponsiveContainer>
+      <figure style={{ margin: 0, width: "100%" }}>
+        <div style={{ height: 400, width: "100%" }}>
+          <ResponsiveContainer>
           <BarChart data={barChartData} margin={{ top: 20, right: 20, bottom: 30, left: 20 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--k-bd)" vertical={false} />
             <XAxis 
@@ -259,8 +260,12 @@ function ResultsChart() {
               <ErrorBar dataKey="raco1_err" width={4} strokeWidth={2} stroke="var(--k-ink)" opacity={0.6} />
             </Bar>
           </BarChart>
-        </ResponsiveContainer>
-      </div>
+          </ResponsiveContainer>
+        </div>
+        <figcaption style={{ textAlign: "center", color: K.mu, fontSize: FZ.sm, marginTop: 12 }}>
+          CelebA using a ResNet-16 model
+        </figcaption>
+      </figure>
     </div>
   );
 }
@@ -451,7 +456,7 @@ export default function App() {
                       transition: "all 0.2s ease"
                     }}
                   >
-                    {i + 1}. {s.title}
+                    {s.title}
                   </button>
                 ))}
               </div>
