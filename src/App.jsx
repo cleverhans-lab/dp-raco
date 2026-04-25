@@ -341,7 +341,7 @@ export default function App() {
             }}>
               Walkthrough
             </button>
-            <button onClick={() => setTab("blog")} style={{
+            {/* <button onClick={() => setTab("blog")} style={{
               background: "none", border: "none", padding: 0,
               fontSize: FZ.md, fontWeight: tab === "blog" ? 600 : 400,
               color: tab === "blog" ? K.bl : K.mu,
@@ -349,13 +349,23 @@ export default function App() {
               textUnderlineOffset: 4
             }}>
               Blog
-            </button>
+            </button> */}
           </div>
         </div>
-        <a href="https://github.com/cleverhans-lab/dp-raco"
-          style={{ fontSize: FZ.sm, color: K.bl, textDecoration: "none", borderBottom: `1px solid ${K.bl}` }}>
-          github.com/cleverhans-lab/dp-raco ↗
-        </a>
+        <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+          <a href="https://openreview.net/forum?id=mex3rvs2KX" target="_blank" rel="noopener noreferrer"
+            style={{ padding: "8px 16px", borderRadius: 6, background: K.ink, color: K.pa, textDecoration: "none", fontSize: FZ.sm, fontWeight: 500, transition: "all 0.2s ease" }}>
+            Paper ↗
+          </a>
+          <a href="https://iclr.cc/virtual/2026/poster/10007554" target="_blank" rel="noopener noreferrer"
+            style={{ padding: "8px 16px", borderRadius: 6, border: `1px solid ${K.bd}`, background: K.pa, color: K.ink, textDecoration: "none", fontSize: FZ.sm, fontWeight: 500, transition: "all 0.2s ease" }}>
+            ICLR Page ↗
+          </a>
+          <a href="https://github.com/cleverhans-lab/dp-raco" target="_blank" rel="noopener noreferrer"
+            style={{ padding: "8px 16px", borderRadius: 6, border: `1px solid ${K.bd}`, background: K.pa, color: K.ink, textDecoration: "none", fontSize: FZ.sm, fontWeight: 500, transition: "all 0.2s ease" }}>
+            GitHub ↗
+          </a>
+        </div>
       </div>
 
       {/* Main */}
@@ -486,7 +496,9 @@ export default function App() {
         {/* Key results */}
         <div style={{ marginTop: 64, borderTop: `1px solid ${K.bd}`, paddingTop: 40 }}>
           <Lbl>Main Results</Lbl>
-            <p>
+            <br/>
+            <br/>
+            <p style={{ fontSize: FZ.lg, lineHeight: 1.8, color: K.ink, margin: "0 0 48px" }}>
             On tabular data, RaCO-DP Pareto dominates prior SOTA and
             nearly closes the optimality gap with non-private models.
             On deep models, our method maintains high utility even at small ε
@@ -526,7 +538,11 @@ while reliably satisfying fairness constraints
         display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8,
       }}>
         <span>ICLR 2026 · University of Toronto · Vector Institute · Inria</span>
-        <a href="https://github.com/cleverhans-lab/dp-raco" style={{ color: K.bl, textDecoration: "none" }}>Code ↗</a>
+        <div style={{ display: "flex", gap: 16 }}>
+          <a href="https://openreview.net/forum?id=mex3rvs2KX" target="_blank" rel="noopener noreferrer" style={{ color: K.bl, textDecoration: "none" }}>Paper ↗</a>
+          <a href="https://iclr.cc/virtual/2026/poster/10007554" target="_blank" rel="noopener noreferrer" style={{ color: K.bl, textDecoration: "none" }}>ICLR Page ↗</a>
+          <a href="https://github.com/cleverhans-lab/dp-raco" target="_blank" rel="noopener noreferrer" style={{ color: K.bl, textDecoration: "none" }}>Code ↗</a>
+        </div>
       </div>
     </div>
   );
