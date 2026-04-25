@@ -38,6 +38,11 @@ jobs:
       - name: Build
         run: npm run build
         
+      - name: Fix SPA routing and disable Jekyll
+        run: |
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
