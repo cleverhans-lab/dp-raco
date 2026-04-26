@@ -1,6 +1,6 @@
 # Can We Train Fair ML Models Without Sacrificing Privacy?
 
-**Mohammad Yaghini, Tudor Cebere, Michael Menart, Aurélien Bellet, Nicolas Papernot**  
+**Mohammad Yaghini\*, Tudor Cebere\*, Michael Menart, Aurélien Bellet, Nicolas Papernot**  
 *ICLR 2026 · University of Toronto, Vector Institute, Inria*
 
 
